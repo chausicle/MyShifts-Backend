@@ -1,0 +1,25 @@
+{
+  "name": "MyShifts-Backend",
+  "version": "1.0.0",
+  "description": "A backend API for an app that employees can use to get their shifts covered or find shifts they can cover",
+  "main": "knexfile.js",
+  "dependencies": {
+    "knex": "^0.14.4",
+    "pg": "^7.4.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chausicle/MyShifts-Backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chausicle/MyShifts-Backend/issues"
+  },
+  "homepage": "https://github.com/chausicle/MyShifts-Backend#readme"
+}
