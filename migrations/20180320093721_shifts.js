@@ -2,8 +2,9 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('shifts', table => {
     table.increments('id')
-    table.string('start_time').notNullable().defaultsTo('')
-    table.string('end_time').notNullable().defaultsTo('')
+    table.date('date').notNullable().defaultsTo('')
+    table.time('start').notNullable().defaultsTo('')
+    table.time('end').notNullable().defaultsTo('')
     table.timestamps(true, true)
   })
 };
