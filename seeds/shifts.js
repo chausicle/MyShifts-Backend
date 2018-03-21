@@ -4,9 +4,9 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       // Inserts seed entries
       return knex('shifts').insert([
-        {id: 1, start_time: '9:00', end_time: '14:00'},
-        {id: 2, start_time: '11:00', end_time: '16:00'},
-        {id: 3, start_time: '13:00', end_time: '19:00'},
+        {id: 1, date: '2018-03-21', start: '09:00'},
+        {id: 2, date: '2018-03-21', start: '13:00'},
+        {id: 3, date: '2018-03-22', start: '17:00'},
       ])
     }).then(() => {
       return knex.raw(
