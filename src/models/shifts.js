@@ -11,19 +11,19 @@ getAll = () => {
     })
 }
 
-function getById(id) {
+getById = (id) => {
 
 }
 
-function create() {
+create = () => {
 
 }
 
-function changeShift(id) {
+changeShift = (id) => {
 
 }
 
-function deleteShift(id) {
+deleteShift = (id) => {
 
 }
 
