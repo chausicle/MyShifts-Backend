@@ -12,6 +12,9 @@ app.use(bodyParser.json())
 app.disable('x-powered-by')
 if (process.env.NODE_ENV !== 'test') app.use(morgan('dev'))
 
+const shiftsPath = require('./src/routes/shifts')
+app.use('/shifts', shiftsPath)
+
 app.use((err, req, res, next) => {
   const status = err.status || 500
   res.status(status).json({ error: err })
