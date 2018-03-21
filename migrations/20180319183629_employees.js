@@ -4,6 +4,7 @@ exports.up = function(knex, Promise) {
     table.increments('id')
     table.string('first_name').notNullable().defaultsTo('')
     table.string('last_name').notNullable().defaultsTo('')
+    table.string('email').notNullable().defaultsTo('')
     table.timestamps(true, true)
   })
 };
