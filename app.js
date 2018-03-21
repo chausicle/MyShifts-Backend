@@ -10,10 +10,9 @@ console.log('were in app.js');
 app.use(cors())
 app.use(bodyParser.json())
 app.disable('x-powered-by')
-if (process.env.NODE_ENV !== 'test') app.use(morgan('dev'))
+if(process.env.NODE_ENV !== 'test') app.use(morgan('dev'))
 
-const shiftsPath = require('./src/routes/shifts')
-app.use('/shifts', shiftsPath)
+
 
 app.use((err, req, res, next) => {
   const status = err.status || 500
@@ -21,10 +20,10 @@ app.use((err, req, res, next) => {
 })
 
 app.use((req, res, next) => {
-  res.status(404).json({ error: { message: 'Not found' }})
+  res.status(404).json({ error: { message: 'Not Found' } })
 })
 
-const listener = () => console.log(`Listening on port ${port}`)
+const listener = () => { console.log(`Listening on port ${port}`) }
 app.listen(port, listener)
 
 module.exports = app
