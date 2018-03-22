@@ -4,6 +4,8 @@ exports.up = function(knex, Promise) {
     table.increments('id')
     table.integer('employee_id').notNullable()
     table.integer('shift_id').notNullable()
+    table.time('start').notNullable()
+    table.date('date').notNullable()
     table.timestamps(true, true)
   })
 };
