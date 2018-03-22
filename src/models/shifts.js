@@ -1,5 +1,6 @@
 const shifts = require('../../queries/main')
 
+
 const getRequests = () => {
   console.log('getRequests models');
   const requests = shifts.getRequests()
@@ -7,6 +8,7 @@ const getRequests = () => {
   .then(result => {
     return result
   })
+
 }
 
 const getUserShifts = () => {
@@ -18,13 +20,40 @@ const getUserShifts = () => {
   })
 }
 
-function getById(id) {}
 
-function create() {}
+const createRequest = (body) => {
+  const errors = []
 
-function changeShift(id, body) {
+  const userId = body.user_id
+  const shiftId = body.shift_id
 
+  if(!userId || !shiftId) {
+    errors.push('Both user id and shift id are required')
+    return { errors }
+  } else {
+    const newShift = shifts.createRequest(userId, shiftId)
+    return newShift
+      .then(result => {
+        return result[0]
+    })
+  }
+  
 }
+
+const deleteRequest = (id) => {
+  const errors = []
+
+
+  if(!id) {
+    errors.push('Request id is required')
+  }
+  const deleteReq = shifts.deleteRequest(id)
+  return deleteReq
+    .then(result => {
+      return result
+    })
+}
+
 
 const deleteUserShift = id => {
   const errors = []
@@ -38,6 +67,7 @@ const deleteUserShift = id => {
     })
     return deleted
  }
+
 }
 
 module.exports = {
