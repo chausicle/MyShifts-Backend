@@ -1,27 +1,20 @@
 const shifts = require('../../queries/main')
 
-
-
 const getRequests = () => {
-  console.log('getRequests models');
   const requests = shifts.getRequests()
   return requests
   .then(result => {
     return result
   })
-
 }
 
-
 const getUserShifts = () => {
-  console.log('getUserShifts models');
   const userShifts = shifts.getUserShifts()
   return userShifts
   .then(result => {
     return result
   })
 }
-
 
 const takeShift = (params) => {
   let result
@@ -46,7 +39,6 @@ const takeShift = (params) => {
   }
 }
 
-
 const createRequest = (body) => {
   const errors = []
 
@@ -63,12 +55,10 @@ const createRequest = (body) => {
         return result[0]
     })
   }
-  
 }
 
 const deleteRequest = (id) => {
   const errors = []
-
 
   if(!id) {
     errors.push('Request id is required')
@@ -79,7 +69,6 @@ const deleteRequest = (id) => {
       return result
     })
 }
-
 
 const deleteUserShift = id => {
   const errors = []
@@ -93,8 +82,6 @@ const deleteUserShift = id => {
     })
     return deleted
  }
-
-
 }
 
 module.exports = {

@@ -2,19 +2,14 @@ const model = require('../models/shifts')
 
 
 const getRequests = (req, res, next) => {
-
-  console.log('were in controllers');
   const data = model.getRequests()
-  console.log('data in controllers', data);
   data
   .then(result => {
     res.status(200).json({ result })
   })
-
 }
 
 const getUserShifts = (req, res, next) => {
-  console.log("user shifts in controllers");
   const data = model.getUserShifts()
   data
   .then(result => {
@@ -32,7 +27,6 @@ const getById = (req, res, next) => {
   }
 }
 
-
 const takeShift = (req, res, next) => {
   const data = model.takeShift(req.params)
 
@@ -49,26 +43,19 @@ const takeShift = (req, res, next) => {
   })
 }
 
-
-
 const createRequest =  (req, res, next) => {
   const data = model.createRequest(req.body)
-  console.log('ddddddd', data)
   if (data.errors) {
-    
     return next({ status: 400, message: `Could not create new request`, errors: data.errors })
-
   }
   
   data
     .then(result => {
-      console.log('result in controller', result)
       res.status(201).json({ result })
     })
 }
 
 const deleteRequest = (req, res) => {
-  console.log('fffffff', req.params)
   const data = model.deleteRequest(req.params.id)
 
   if (data.errors) {
@@ -77,7 +64,6 @@ const deleteRequest = (req, res) => {
 
   data
     .then(result => {
-      console.log('tttttt', result)
       if(result === 0) {
          res.status(404).json({error: {message: 'Could not delete request', errors: 'Request id not found'}})
       } else {
@@ -98,15 +84,13 @@ const deleteUserShift = (req, res, next) => {
     })
 }
 
-
 module.exports = {
   getRequests,
   getUserShifts,
   getById,
   takeShift,
-  deleteShift
+  deleteShift,
   createRequest,
   deleteRequest,
   deleteUserShift
-
 }
