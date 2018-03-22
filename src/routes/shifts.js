@@ -4,7 +4,6 @@ const ctrl = require('../controllers/shifts')
 
 router.get('/', ctrl.getRequests)
 router.get('/user-shifts', ctrl.getUserShifts)
-router.get('/:id', ctrl. getById)
 router.post('/user_shifts/:id', ctrl.takeShift)
 router.post('/requests', ctrl.createRequest)
 router.delete('/user-shifts/:id', ctrl.deleteUserShift)

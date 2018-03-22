@@ -48,7 +48,7 @@ const createRequest =  (req, res, next) => {
   if (data.errors) {
     return next({ status: 400, message: `Could not create new request`, errors: data.errors })
   }
-  
+
   data
     .then(result => {
       res.status(201).json({ result })
@@ -87,9 +87,7 @@ const deleteUserShift = (req, res, next) => {
 module.exports = {
   getRequests,
   getUserShifts,
-  getById,
   takeShift,
-  deleteShift,
   createRequest,
   deleteRequest,
   deleteUserShift
