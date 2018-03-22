@@ -1,27 +1,43 @@
 const knex = require('./db')
 
+
 const getRequests = () => {
   console.log("in main.js");
   return knex('requests')
     .select('')
 }
 
-const getUserShifts = () => {
-  return knex('user_shifts')
-    .select('')
-}
 
 const getById = () => {
-
+  // return knex
 }
 
-const createRequest = () => {
+const createRequest = (userId, shiftId) => {
+ 
+  const employee_id = userId
+  const shift_id = shiftId
 
+
+  return knex
+    .insert({employee_id, shift_id})
+    .into('requests')
+    .returning('*')
 }
+
+
+const deleteRequest = (id) => {
+  return knex('requests')
+    .where('id', id)
+    .del()
+}
+
 
 const changeShift = () => {
 
 }
+
+const deleteShift = () => {
+
 
 const deleteUserShift = (id) => {
   console.log(id, "knex id");

@@ -29,23 +29,40 @@ function getById(req, res, next) {
   }
 }
 
-function createRequest (req, res, next) {
-  const result = model.create(req.body)
-  if (result.errors) {
-    return next({ status: 400, message: `Could not create new post`, errors: result.errors })
+
+const createRequest =  (req, res, next) => {
+  const data = model.createRequest(req.body)
+  console.log('ddddddd', data)
+  if (data.errors) {
+    
+    return next({ status: 400, message: `Could not create new request`, errors: data.errors })
+
   }
-  res.status(201).json({ data: result })
+  
+  data
+    .then(result => {
+      console.log('result in controller', result)
+      res.status(201).json({ result })
+    })
 }
 
-function changeShift (req, res, next) {
-  const id = req.params.id
-  const body = req.body
-  const data = model.changeShift(id, body)
-  if (result.errors) {
-    res.status(404).json({ error: {message: `Could not find shift`, errors: result.errors} })
-  } else {
-    res.status(200).json({ data })
+const deleteRequest = (req, res) => {
+  console.log('fffffff', req.params)
+  const data = model.deleteRequest(req.params.id)
+
+  if (data.errors) {
+    return next({ status: 400, message: `Could not create new request`, errors: data.errors })
   }
+
+  data
+    .then(result => {
+      console.log('tttttt', result)
+      if(result === 0) {
+         res.status(404).json({error: {message: 'Could not delete request', errors: 'Request id not found'}})
+      } else {
+      res.status(204).json({ result })
+      }
+    })
 }
 
 const deleteUserShift = (req, res, next) => {
@@ -68,4 +85,5 @@ module.exports = {
   createRequest,
   deleteRequest,
   deleteUserShift
+
 }
