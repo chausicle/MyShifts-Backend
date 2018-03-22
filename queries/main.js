@@ -15,7 +15,7 @@ const getById = () => {
 
 }
 
-const create = () => {
+const createRequest = () => {
 
 }
 
@@ -35,7 +35,8 @@ module.exports = {
   getRequests,
   getUserShifts,
   getById,
-  create,
+  createRequest,
+  deleteRequest,
   changeShift,
   deleteUserShift
 }

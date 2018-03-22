@@ -44,7 +44,7 @@ module.exports = {
   getRequests,
   getUserShifts,
   getById,
-  create,
-  changeShift,
+  createRequest,
+  deleteRequest,
   deleteUserShift
 }
