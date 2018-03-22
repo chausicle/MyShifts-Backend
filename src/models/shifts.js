@@ -37,10 +37,6 @@ const takeShift = (params) => {
   }
 }
 
-const changeShift = (id) => {
-
-}
-
 const deleteShift = (id) => {
 
 }
@@ -49,6 +45,5 @@ module.exports = {
   getAll,
   getById,
   takeShift,
-  changeShift,
   deleteShift
 }

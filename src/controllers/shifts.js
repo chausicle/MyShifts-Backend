@@ -37,17 +37,6 @@ const takeShift = (req, res, next) => {
   })
 }
 
-const changeShift = (req, res, next) => {
-  const id = req.params.id
-  const body = req.body
-  const data = model.changeShift(id, body)
-  if (result.errors) {
-    res.status(404).json({ error: {message: `Could not find shift`, errors: result.errors} })
-  } else {
-    res.status(200).json({ data })
-  }
-}
-
 const deleteShift = (req, res, next) => {
   const id = req.params.id
   const data = model.deleteShift(id)
@@ -63,6 +52,5 @@ module.exports = {
   getAll,
   getById,
   takeShift,
-  changeShift,
   deleteShift
 }
