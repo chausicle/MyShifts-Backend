@@ -1,6 +1,6 @@
 const model = require('../models/shifts')
 
-function getAll (req, res, next) {
+getAll = (req, res, next) => {
   console.log('were in controllers');
   const data = model.getAll()
   console.log('data in controllers', data);
@@ -8,10 +8,10 @@ function getAll (req, res, next) {
   .then(result => {
     res.status(200).json({ result })
   })
-  
+
 }
 
-function getById(req, res, next) {
+getById = (req, res, next) => {
   const id = req.params.id
   const data = model.getById(id)
   if (result.errors) {
@@ -21,15 +21,23 @@ function getById(req, res, next) {
   }
 }
 
-function create (req, res, next) {
-  const result = model.create(req.body)
-  if (result.errors) {
-    return next({ status: 400, message: `Could not create new post`, errors: result.errors })
+takeShift = (req, res, next) => {
+  const data = model.takeShift(req.params)
+
+  if (data.errors) {
+    return next({
+      status: data.status,
+      message: data.message,
+      errors: data.errors
+    })
   }
-  res.status(201).json({ data: result })
+
+  data.then(result => {
+    res.status(201).json({ data: result })
+  })
 }
 
-function changeShift (req, res, next) {
+changeShift = (req, res, next) => {
   const id = req.params.id
   const body = req.body
   const data = model.changeShift(id, body)
@@ -40,7 +48,7 @@ function changeShift (req, res, next) {
   }
 }
 
-function deleteShift (req, res, next) {
+deleteShift = (req, res, next) => {
   const id = req.params.id
   const data = model.deleteShift(id)
   if (result.errors) {
@@ -54,7 +62,7 @@ function deleteShift (req, res, next) {
 module.exports = {
   getAll,
   getById,
-  create,
+  takeShift,
   changeShift,
   deleteShift
 }
