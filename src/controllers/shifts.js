@@ -1,6 +1,6 @@
 const model = require('../models/shifts')
 
-getAll = (req, res, next) => {
+const getAll = (req, res, next) => {
   console.log('were in controllers');
   const data = model.getAll()
   console.log('data in controllers', data);
@@ -11,7 +11,7 @@ getAll = (req, res, next) => {
 
 }
 
-getById = (req, res, next) => {
+const getById = (req, res, next) => {
   const id = req.params.id
   const data = model.getById(id)
   if (result.errors) {
@@ -21,7 +21,7 @@ getById = (req, res, next) => {
   }
 }
 
-takeShift = (req, res, next) => {
+const takeShift = (req, res, next) => {
   const data = model.takeShift(req.params)
 
   if (data.errors) {
@@ -37,7 +37,7 @@ takeShift = (req, res, next) => {
   })
 }
 
-changeShift = (req, res, next) => {
+const changeShift = (req, res, next) => {
   const id = req.params.id
   const body = req.body
   const data = model.changeShift(id, body)
@@ -48,7 +48,7 @@ changeShift = (req, res, next) => {
   }
 }
 
-deleteShift = (req, res, next) => {
+const deleteShift = (req, res, next) => {
   const id = req.params.id
   const data = model.deleteShift(id)
   if (result.errors) {
