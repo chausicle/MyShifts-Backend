@@ -45,10 +45,8 @@ const deleteUserShift = (id) => {
 module.exports = {
   getRequests,
   getUserShifts,
-  getById,
   takeShift,
   createRequest,
   deleteRequest,
-  changeShift,
   deleteUserShift
 }
