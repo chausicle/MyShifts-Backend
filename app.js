@@ -5,8 +5,6 @@ const port = process.env.PORT || 3000
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
 
-console.log('were in app.js');
-
 app.use(cors())
 app.use(bodyParser.json())
 app.disable('x-powered-by')
