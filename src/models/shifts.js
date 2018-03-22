@@ -1,7 +1,7 @@
 
 const shifts = require('../../queries/main')
 
-getAll = () => {
+const getAll = () => {
   const requests = shifts.getAll()
 
   return requests
@@ -10,11 +10,11 @@ getAll = () => {
     })
 }
 
-getById = (id) => {
+const getById = (id) => {
 
 }
 
-takeShift = (params) => {
+const takeShift = (params) => {
   let result
   let errors = []
   const shift_id = params.id
@@ -37,11 +37,11 @@ takeShift = (params) => {
   }
 }
 
-changeShift = (id) => {
+const changeShift = (id) => {
 
 }
 
-deleteShift = (id) => {
+const deleteShift = (id) => {
 
 }
 
