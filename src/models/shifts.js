@@ -1,6 +1,7 @@
 const shifts = require('../../queries/main')
 
 
+
 const getRequests = () => {
   console.log('getRequests models');
   const requests = shifts.getRequests()
@@ -11,6 +12,7 @@ const getRequests = () => {
 
 }
 
+
 const getUserShifts = () => {
   console.log('getUserShifts models');
   const userShifts = shifts.getUserShifts()
@@ -18,6 +20,30 @@ const getUserShifts = () => {
   .then(result => {
     return result
   })
+}
+
+
+const takeShift = (params) => {
+  let result
+  let errors = []
+  const shift_id = params.id
+
+  if (isNaN(Number(shift_id))) {
+    errors.push(`Cannot find id ${shift_id}`)
+
+    return result = {
+      status: 404,
+      message: `Not Found`,
+      errors
+    }
+  }
+  else {
+    const addedShift = shifts.takeShift(shift_id)
+    return addedShift
+      .then(createdShift => {
+        return createdShift[0]
+      })
+  }
 }
 
 
@@ -68,12 +94,14 @@ const deleteUserShift = id => {
     return deleted
  }
 
+
 }
 
 module.exports = {
   getRequests,
   getUserShifts,
   getById,
+  takeShift,
   createRequest,
   deleteRequest,
   deleteUserShift

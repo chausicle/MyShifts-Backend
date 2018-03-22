@@ -2,6 +2,10 @@ const express = require('express')
 const router = express.Router()
 const ctrl = require('../controllers/shifts')
 
+
+
+router.post('/user_shifts/:id', ctrl.takeShift)
+
 console.log('in routes');
 
 router.get('/', ctrl.getRequests)
@@ -11,5 +15,6 @@ router.post('/requests', ctrl.createRequest)
 router.put('/:id', ctrl.changeShift)
 router.delete('/user-shifts/:id', ctrl.deleteUserShift)
 router.delete('/requests/:id', ctrl.deleteRequest)
+
 
 module.exports = router
