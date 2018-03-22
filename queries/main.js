@@ -1,13 +1,18 @@
 const knex = require('./db')
 
-getAll = () => {
+getRequests = () => {
   console.log("in main.js");
   return knex('requests')
     .select('')
 }
 
+getUserShifts = () => {
+  return knex('user_shifts')
+    .select('')
+}
+
 getById = () => {
-  // return knex
+
 }
 
 create = () => {
@@ -18,14 +23,19 @@ changeShift = () => {
 
 }
 
-deleteShift = () => {
-
+deleteUserShift = (id) => {
+  console.log(id, "knex id");
+  return knex('user_shifts')
+    .delete()
+    .returning('*')
+    .where({ id })
 }
 
 module.exports = {
-  getAll,
+  getRequests,
+  getUserShifts,
   getById,
   create,
   changeShift,
-  deleteShift
+  deleteUserShift
 }

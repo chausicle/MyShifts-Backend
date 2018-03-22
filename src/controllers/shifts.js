@@ -1,14 +1,22 @@
 const model = require('../models/shifts')
 
-function getAll (req, res, next) {
+const getRequests = (req, res, next) => {
   console.log('were in controllers');
-  const data = model.getAll()
+  const data = model.getRequests()
   console.log('data in controllers', data);
   data
   .then(result => {
     res.status(200).json({ result })
   })
-  
+}
+
+const getUserShifts = (req, res, next) => {
+  console.log("user shifts in controllers");
+  const data = model.getUserShifts()
+  data
+  .then(result => {
+    res.status(200).json( { result })
+  })
 }
 
 function getById(req, res, next) {
@@ -40,21 +48,24 @@ function changeShift (req, res, next) {
   }
 }
 
-function deleteShift (req, res, next) {
-  const id = req.params.id
-  const data = model.deleteShift(id)
-  if (result.errors) {
-    res.status(404).json({error: {message: `Could not delete shift`, errors: result.errors} })
-  } else {
-    res.status(200).json({ data })
-  }
+const deleteUserShift = (req, res, next) => {
+  const id = Number(req.params.id)
+  const data = model.deleteUserShift(id)
+    data.then(result => {
+      if (result.length === 0) {
+        res.status(404).json( {error: `ID ${id} not found`})
+      } else {
+        res.status(200).json( { message: `Sucessfully deleted user_shifts ${id}`})
+    }
+    })
 }
 
 
 module.exports = {
-  getAll,
+  getRequests,
+  getUserShifts,
   getById,
   create,
   changeShift,
-  deleteShift
+  deleteUserShift
 }
