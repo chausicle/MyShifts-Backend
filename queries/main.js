@@ -1,17 +1,15 @@
 const knex = require('./db')
 
-
-
 const getRequests = () => {
   console.log("in main.js");
   return knex('requests')
     .select('')
 }
 
-const getById = () => {
-  // return knex
+const getUserShifts = () => {
+  return knex('user_shifts')
+    .select('')
 }
-
 
 const takeShift = (id) => {
   const shift_id = id
@@ -45,9 +43,6 @@ const deleteRequest = (id) => {
 const changeShift = () => {
 
 }
-
-const deleteShift = () => {
-
 
 const deleteUserShift = (id) => {
   console.log(id, "knex id");
