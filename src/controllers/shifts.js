@@ -29,7 +29,7 @@ function getById(req, res, next) {
   }
 }
 
-function create (req, res, next) {
+function createRequest (req, res, next) {
   const result = model.create(req.body)
   if (result.errors) {
     return next({ status: 400, message: `Could not create new post`, errors: result.errors })
@@ -65,7 +65,7 @@ module.exports = {
   getRequests,
   getUserShifts,
   getById,
-  create,
-  changeShift,
+  createRequest,
+  deleteRequest,
   deleteUserShift
 }
