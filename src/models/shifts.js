@@ -42,14 +42,16 @@ const takeShift = (params) => {
 const createRequest = (body) => {
   const errors = []
 
-  const userId = body.user_id
+  const employeeId = body.employee_id
   const shiftId = body.shift_id
+  const start = body.start
+  const date = body.date
 
-  if(!userId || !shiftId) {
-    errors.push('Both user id and shift id are required')
+  if(!employeeId || !shiftId || !start || !date) {
+    errors.push('Paramaters employee_id, shift_id, start, and date are required')
     return { errors }
   } else {
-    const newShift = shifts.createRequest(userId, shiftId)
+    const newShift = shifts.createRequest(employeeId, shiftId, start, date )
     return newShift
       .then(result => {
         return result[0]
