@@ -17,6 +17,18 @@ const getUserShifts = (req, res, next) => {
   })
 }
 
+const getOneShift = (req, res, next) => {
+  console.log('------', req.params);
+  
+  const data = model.getOneShift(req.params.id)
+  data
+    .then(result => {
+      console.log('result in controller', result)
+      res.status(200).json({ result })
+    }
+  )
+}
+
 const getById = (req, res, next) => {
   const id = req.params.id
   const data = model.getById(id)
@@ -87,6 +99,7 @@ const deleteUserShift = (req, res, next) => {
 module.exports = {
   getRequests,
   getUserShifts,
+  getOneShift,
   takeShift,
   createRequest,
   deleteRequest,
