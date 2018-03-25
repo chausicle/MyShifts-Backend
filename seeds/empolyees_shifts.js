@@ -6,10 +6,19 @@ exports.seed = function(knex, Promise) {
       // Inserts seed entries
       return knex('employees_shifts').insert([
         {employee_id: 1, shift_id: 1},
-        {employee_id: 1, shift_id: 2},
-        {employee_id: 1, shift_id: 3},
+        {employee_id: 1, shift_id: 4},
+        {employee_id: 1, shift_id: 8},
+        {employee_id: 1, shift_id: 11},
+        {employee_id: 1, shift_id: 15},
+        {employee_id: 1, shift_id: 18},
+        {employee_id: 1, shift_id: 19},
+        {employee_id: 1, shift_id: 22},
         {employee_id: 2, shift_id: 2},
-        {employee_id: 3, shift_id: 3}
+        {employee_id: 3, shift_id: 3},
+        {employee_id: 2, shift_id: 5},
+        {employee_id: 3, shift_id: 6},
+        {employee_id: 2, shift_id: 7},
+        {employee_id: 3, shift_id: 9}
       ])
     })
 }

@@ -3,7 +3,7 @@ const shifts = require('../../queries/main')
 const getRequests = () => {
   const requests = shifts.getRequests()
   return requests
-  .then(result => {
+    .then(result => {
     return result
   })
 }
@@ -11,9 +11,19 @@ const getRequests = () => {
 const getUserShifts = () => {
   const userShifts = shifts.getUserShifts()
   return userShifts
-  .then(result => {
+    .then(result => {
+    
     return result
   })
+}
+
+const getOneShift = (id) => {
+  const oneShift = shifts.getOneShift(id)
+  return oneShift
+    .then(result => {
+      console.log('result in model', result[0])
+      return result[0]
+    })
 }
 
 const takeShift = (params) => {
@@ -89,6 +99,7 @@ const deleteUserShift = id => {
 module.exports = {
   getRequests,
   getUserShifts,
+  getOneShift,
   takeShift,
   createRequest,
   deleteRequest,
