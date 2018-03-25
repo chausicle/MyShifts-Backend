@@ -25,6 +25,12 @@ const getUserShifts = () => {
     .select('')
 }
 
+const getOneShift = (id) => {
+  return knex('shifts')
+    .select('start', 'date')
+    .where('id', id)
+}
+
 const takeShift = (id) => {
   const shift_id = id
 
@@ -60,6 +66,7 @@ const deleteUserShift = (id) => {
 module.exports = {
   getRequests,
   getUserShifts,
+  getOneShift,
   takeShift,
   createRequest,
   deleteRequest,
