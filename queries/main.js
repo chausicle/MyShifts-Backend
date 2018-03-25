@@ -1,8 +1,23 @@
 const knex = require('./db')
 
 const getRequests = () => {
+  // get requests with nested employees
+  let result
+
   return knex('requests')
     .select('')
+    .then(requestArray => {
+      result = requestArray
+
+      return knex('employees')
+        .then(employeeArray => {
+
+          result.forEach((request, index) => {
+            result[index].employees = employeeArray.filter(employee => request.employee_id === employee.id)
+          })
+          return result
+        })
+    })
 }
 
 const getUserShifts = () => {
