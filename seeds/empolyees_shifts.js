@@ -14,9 +14,9 @@ exports.seed = function(knex, Promise) {
         {employee_id: 1, shift_id: 19},
         {employee_id: 1, shift_id: 22},
         {employee_id: 2, shift_id: 2},
-        {employee_id: 3, shift_id: 3}
+        {employee_id: 3, shift_id: 3},
         {employee_id: 2, shift_id: 5},
-        {employee_id: 3, shift_id: 6}
+        {employee_id: 3, shift_id: 6},
         {employee_id: 2, shift_id: 7},
         {employee_id: 3, shift_id: 9}
       ])
