@@ -5,14 +5,14 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       // Inserts seed entries
       return knex('user_shifts').insert([
-        {id: 1, shift_id: 1, request_id: 1},
-        {id: 2, shift_id: 4, request_id: 2},
-        {id: 3, shift_id: 8, request_id: 0},
-        {id: 4, shift_id: 11, request_id: 4},
-        {id: 5, shift_id: 15, request_id: 5},
-        {id: 6, shift_id: 18, request_id: 6},
-        {id: 7, shift_id: 19, request_id: 7},
-        {id: 8, shift_id: 22, request_id: 8}
+        {id: 1, shift_id: 1, start: '10:00', date: '2018-03-21' , request_id: 1},
+        {id: 2, shift_id: 4, start: '10:00', date: '2018-03-22' , request_id: 2},
+        {id: 3, shift_id: 8, start: '14:00', date: '2018-03-23' , request_id: 0},
+        {id: 4, shift_id: 11, start: '14:00', date: '2018-03-24' ,request_id: 4},
+        {id: 5, shift_id: 14, start: '14:00', date: '2018-03-25' ,request_id: 0},
+        {id: 6, shift_id: 18, start: '18:00', date: '2018-03-26' ,request_id: 6},
+        {id: 7, shift_id: 19, start: '10:00', date: '2018-03-27' ,request_id: 7},
+        {id: 8, shift_id: 22, start: '10:00', date: '2018-03-28' ,request_id: 8}
       ]);
     })
     .then(() => {
