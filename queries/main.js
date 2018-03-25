@@ -1,13 +1,34 @@
 const knex = require('./db')
 
 const getRequests = () => {
+  // get requests with nested employees
+  let result
+
   return knex('requests')
     .select('')
+    .then(requestArray => {
+      result = requestArray
+
+      return knex('employees')
+        .then(employeeArray => {
+
+          result.forEach((request, index) => {
+            result[index].employees = employeeArray.filter(employee => request.employee_id === employee.id)
+          })
+          return result
+        })
+    })
 }
 
 const getUserShifts = () => {
   return knex('user_shifts')
     .select('')
+}
+
+const getOneShift = (id) => {
+  return knex('shifts')
+    .select('start', 'date')
+    .where('id', id)
 }
 
 const takeShift = (id) => {
@@ -45,6 +66,7 @@ const deleteUserShift = (id) => {
 module.exports = {
   getRequests,
   getUserShifts,
+  getOneShift,
   takeShift,
   createRequest,
   deleteRequest,
