@@ -12,7 +12,6 @@ const getUserShifts = () => {
   const userShifts = shifts.getUserShifts()
   return userShifts
     .then(result => {
-
     return result
   })
 }
@@ -26,10 +25,11 @@ const getOneShift = (id) => {
     })
 }
 
-const takeShift = (params) => {
+const takeShift = (req) => {
   let result
   let errors = []
-  const shift_id = params.id
+  const shift_id = req.params.id
+  const employee_id = req.body.employeeId
 
   if (isNaN(Number(shift_id))) {
     errors.push(`Invalid id: ${shift_id}`)
