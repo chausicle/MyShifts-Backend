@@ -40,12 +40,12 @@ const takeShift = (id) => {
     .returning('*')
 }
 
-const createRequest = (userId, shiftId) => {
-  const employee_id = userId
+const createRequest = (employeeId, shiftId, start, date) => {
+  const employee_id = employeeId
   const shift_id = shiftId
 
   return knex
-    .insert({employee_id, shift_id})
+    .insert({employee_id, shift_id, start, date })
     .into('requests')
     .returning('*')
 }
