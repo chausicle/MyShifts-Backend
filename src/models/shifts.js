@@ -12,7 +12,6 @@ const getUserShifts = () => {
   const userShifts = shifts.getUserShifts()
   return userShifts
     .then(result => {
-    
     return result
   })
 }
@@ -26,25 +25,24 @@ const getOneShift = (id) => {
     })
 }
 
-const takeShift = (params) => {
+const takeShift = (req) => {
   let result
   let errors = []
-  const shift_id = params.id
+  const shift_id = req.params.id
+  const employee_id = req.body.employeeId
 
   if (isNaN(Number(shift_id))) {
-    errors.push(`Cannot find id ${shift_id}`)
-
+    errors.push(`Invalid id: ${shift_id}`)
     return result = {
       status: 404,
-      message: `Not Found`,
+      message: `ID must be an integer`,
       errors
     }
-  }
-  else {
+  } else {
     const addedShift = shifts.takeShift(shift_id)
     return addedShift
-      .then(createdShift => {
-        return createdShift[0]
+      .then(res => {
+        return res[0]
       })
   }
 }

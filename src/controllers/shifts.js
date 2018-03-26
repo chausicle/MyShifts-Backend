@@ -19,7 +19,7 @@ const getUserShifts = (req, res, next) => {
 
 const getOneShift = (req, res, next) => {
   console.log('------', req.params);
-  
+
   const data = model.getOneShift(req.params.id)
   data
     .then(result => {
@@ -40,7 +40,7 @@ const getById = (req, res, next) => {
 }
 
 const takeShift = (req, res, next) => {
-  const data = model.takeShift(req.params)
+  const data = model.takeShift(req)
 
   if (data.errors) {
     return next({
@@ -49,7 +49,6 @@ const takeShift = (req, res, next) => {
       errors: data.errors
     })
   }
-
   data.then(result => {
     res.status(201).json({ data: result })
   })
