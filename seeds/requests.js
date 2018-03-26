@@ -7,7 +7,7 @@ exports.seed = function(knex, Promise) {
         {id: 2, employee_id: 1, shift_id: 4, start: '10:00', date: '2018-03-22'},
         {id: 3, employee_id: 2, shift_id: 11, start: '14:00', date: '2018-03-24'},
         {id: 4, employee_id: 1, shift_id: 11, start: '14:00', date: '2018-03-24'},
-        {id: 5, employee_id: 1, shift_id: 15, start: '18:00', date: '2018-03-25'},
+        {id: 5, employee_id: 2, shift_id: 15, start: '18:00', date: '2018-03-25'},
         {id: 6, employee_id: 1, shift_id: 18, start: '18:00', date: '2018-03-26'},
         {id: 7, employee_id: 1, shift_id: 19, start: '10:00', date: '2018-03-27'},
         {id: 8, employee_id: 1, shift_id: 22, start: '10:00', date: '2018-03-28'},
