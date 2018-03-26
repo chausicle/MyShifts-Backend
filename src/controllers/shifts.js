@@ -40,7 +40,7 @@ const getById = (req, res, next) => {
 }
 
 const takeShift = (req, res, next) => {
-  const data = model.takeShift(req.params)
+  const data = model.takeShift(req)
 
   if (data.errors) {
     return next({
