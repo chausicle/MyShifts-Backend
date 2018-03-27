@@ -16,7 +16,15 @@ exports.seed = function(knex, Promise) {
         {id: 11, employee_id: 2, shift_id: 5, start: '14:00', date: '2018-03-22'},
         {id: 12, employee_id: 3, shift_id: 6, start: '18:00', date: '2018-03-22'},
         {id: 13, employee_id: 2, shift_id: 7, start: '10:00', date: '2018-03-23'},
-        {id: 14, employee_id: 3, shift_id: 9, start: '18:00', date: '2018-03-23'}
+        {id: 14, employee_id: 3, shift_id: 9, start: '18:00', date: '2018-03-23'},
+        {id: 15, employee_id: 2, shift_id: 24, start: '18:00', date: '2018-03-28'},
+        {id: 16, employee_id: 3, shift_id: 25, start: '10:00', date: '2018-03-29'},
+        {id: 17, employee_id: 2, shift_id: 26, start: '14:00', date: '2018-03-29'},
+        {id: 18, employee_id: 1, shift_id: 29, start: '14:00', date: '2018-03-30'},
+        {id: 19, employee_id: 2, shift_id: 28, start: '10:00', date: '2018-03-30'},
+        {id: 20, employee_id: 3, shift_id: 30, start: '18:00', date: '2018-03-30'},
+        {id: 21, employee_id: 3, shift_id: 31, start: '10:00', date: '2018-03-31'},
+        {id: 22, employee_id: 2, shift_id: 32, start: '14:00', date: '2018-03-31'}
       ]);
     }).then(() => {
       return knex.raw(
