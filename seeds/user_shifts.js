@@ -16,7 +16,12 @@ exports.seed = function(knex, Promise) {
         {id: 9, shift_id: 23, start: '14:00', date: '2018-03-28' ,request_id: 0},
         {id: 10, shift_id: 27, start: '18:00', date: '2018-03-29' ,request_id: 0},
         {id: 11, shift_id: 29, start: '14:00', date: '2018-03-30' ,request_id: 18},
-        {id: 12, shift_id: 33, start: '18:00', date: '2018-03-31' ,request_id: 0}
+        {id: 12, shift_id: 33, start: '18:00', date: '2018-03-31' ,request_id: 0},
+        {id: 13, shift_id: 34, start: '10:00', date: '2018-04-01' ,request_id: 23},
+        {id: 14, shift_id: 38, start: '14:00', date: '2018-04-02' ,request_id: 0},
+        {id: 15, shift_id: 42, start: '18:00', date: '2018-04-03' ,request_id: 27},
+        {id: 16, shift_id: 43, start: '10:00', date: '2018-04-04' ,request_id: 0},
+        {id: 17, shift_id: 46, start: '10:00', date: '2018-04-05' ,request_id: 0}
       ]);
     })
     .then(() => {
