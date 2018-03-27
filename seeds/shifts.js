@@ -46,7 +46,15 @@ exports.seed = function(knex, Promise) {
         {id: 40, date: '2018-04-03', start: '10:00'},
         {id: 41, date: '2018-04-03', start: '14:00'},
         {id: 42, date: '2018-04-03', start: '18:00'},
-        {id: 43, date: '2018-04-03', start: '10:00'}
+        {id: 43, date: '2018-04-04', start: '10:00'},
+        {id: 44, date: '2018-04-04', start: '14:00'},
+        {id: 45, date: '2018-04-04', start: '18:00'},
+        {id: 46, date: '2018-04-05', start: '10:00'},
+        {id: 47, date: '2018-04-05', start: '14:00'},
+        {id: 48, date: '2018-04-05', start: '18:00'},
+        {id: 49, date: '2018-04-06', start: '10:00'},
+        {id: 50, date: '2018-04-06', start: '14:00'},
+        {id: 51, date: '2018-04-06', start: '18:00'}
       ])
     }).then(() => {
       return knex.raw(
