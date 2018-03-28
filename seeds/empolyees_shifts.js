@@ -18,7 +18,31 @@ exports.seed = function(knex, Promise) {
         {employee_id: 2, shift_id: 5},
         {employee_id: 3, shift_id: 6},
         {employee_id: 2, shift_id: 7},
-        {employee_id: 3, shift_id: 9}
+        {employee_id: 3, shift_id: 9},
+        {employee_id: 1, shift_id: 23},
+        {employee_id: 2, shift_id: 24},
+        {employee_id: 3, shift_id: 25},
+        {employee_id: 2, shift_id: 26},
+        {employee_id: 1, shift_id: 27},
+        {employee_id: 2, shift_id: 28},
+        {employee_id: 1, shift_id: 29},
+        {employee_id: 3, shift_id: 30},
+        {employee_id: 3, shift_id: 31},
+        {employee_id: 2, shift_id: 32},
+        {employee_id: 1, shift_id: 33},
+        {employee_id: 1, shift_id: 34},
+        {employee_id: 2, shift_id: 35},
+        {employee_id: 3, shift_id: 36},
+        {employee_id: 2, shift_id: 37},
+        {employee_id: 1, shift_id: 38},
+        {employee_id: 3, shift_id: 39},
+        {employee_id: 3, shift_id: 40},
+        {employee_id: 2, shift_id: 41},
+        {employee_id: 1, shift_id: 42},
+        {employee_id: 1, shift_id: 43},
+        {employee_id: 2, shift_id: 44},
+        {employee_id: 3, shift_id: 45},
+        {employee_id: 1, shift_id: 46}
       ])
     })
 }

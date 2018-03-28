@@ -12,7 +12,6 @@ const getUserShifts = () => {
   const userShifts = shifts.getUserShifts()
   return userShifts
     .then(result => {
-    
     return result
   })
 }
@@ -26,25 +25,24 @@ const getOneShift = (id) => {
     })
 }
 
-const takeShift = (params) => {
+const takeShift = (req) => {
   let result
   let errors = []
-  const shift_id = params.id
+  const shift_id = req.params.id
+  const employee_id = req.body.employeeId
 
   if (isNaN(Number(shift_id))) {
-    errors.push(`Cannot find id ${shift_id}`)
-
+    errors.push(`Invalid id: ${shift_id}`)
     return result = {
       status: 404,
-      message: `Not Found`,
+      message: `ID must be an integer`,
       errors
     }
-  }
-  else {
+  } else {
     const addedShift = shifts.takeShift(shift_id)
     return addedShift
-      .then(createdShift => {
-        return createdShift[0]
+      .then(res => {
+        return res[0]
       })
   }
 }
@@ -57,16 +55,16 @@ const releaseShift = (params, body) => {
 const createRequest = (body) => {
   const errors = []
 
-  const userId = body.employee_id
+  const employeeId = body.employee_id
   const shiftId = body.shift_id
   const start = body.start
   const date = body.date
 
-  if(!userId || !shiftId) {
-    errors.push('Both user id and shift id are required')
+  if(!employeeId || !shiftId || !start || !date) {
+    errors.push('Paramaters employee_id, shift_id, start, and date are required')
     return { errors }
   } else {
-    const newShift = shifts.createRequest(userId, shiftId)
+    const newShift = shifts.createRequest(employeeId, shiftId, start, date )
     return newShift
       .then(result => {
         return result[0]
