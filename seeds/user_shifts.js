@@ -11,7 +11,7 @@ exports.seed = function(knex, Promise) {
         {id: 4, shift_id: 11, start: '14:00', date: '2018-03-24' ,request_id: 4},
         {id: 5, shift_id: 14, start: '14:00', date: '2018-03-25' ,request_id: 0},
         {id: 6, shift_id: 18, start: '18:00', date: '2018-03-26' ,request_id: 6},
-        {id: 7, shift_id: 19, start: '10:00', date: '2018-03-27' ,request_id: 7},
+        {id: 7, shift_id: 19, start: '14:00', date: '2018-03-27' ,request_id: 0},
         {id: 8, shift_id: 22, start: '10:00', date: '2018-03-28' ,request_id: 8}
       ]);
     })
