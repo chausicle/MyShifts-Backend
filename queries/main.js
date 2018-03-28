@@ -3,7 +3,6 @@ const knex = require('./db')
 const getRequests = () => {
   // get requests with nested employees
   let result
-
   return knex('requests')
     .select('')
     .then(requestArray => {
@@ -31,21 +30,19 @@ const getOneShift = (id) => {
     .where('id', id)
 }
 
-const takeShift = (id) => {
-  const shift_id = id
-
+const takeShift = (shift_id) => {
   return knex
     .insert({ shift_id })
     .into('user_shifts')
     .returning('*')
 }
 
-const createRequest = (userId, shiftId) => {
-  const employee_id = userId
+const createRequest = (employeeId, shiftId, start, date) => {
+  const employee_id = employeeId
   const shift_id = shiftId
 
   return knex
-    .insert({employee_id, shift_id})
+    .insert({employee_id, shift_id, start, date })
     .into('requests')
     .returning('*')
 }
