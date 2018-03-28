@@ -47,6 +47,11 @@ const takeShift = (req) => {
   }
 }
 
+const releaseShift = (params, body) => {
+  const shift_id = params.id
+  const request_id = body.request_id
+}
+
 const createRequest = (body) => {
   const errors = []
 
