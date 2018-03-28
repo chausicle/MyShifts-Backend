@@ -49,11 +49,18 @@ const takeShift = (params) => {
   }
 }
 
+const releaseShift = (params, body) => {
+  const shift_id = params.id
+  const request_id = body.request_id
+}
+
 const createRequest = (body) => {
   const errors = []
 
-  const userId = body.user_id
+  const userId = body.employee_id
   const shiftId = body.shift_id
+  const start = body.start
+  const date = body.date
 
   if(!userId || !shiftId) {
     errors.push('Both user id and shift id are required')
