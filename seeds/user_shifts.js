@@ -20,13 +20,12 @@ exports.seed = function(knex, Promise) {
         {id: 13, shift_id: 34, start: '10:00', date: '2018-04-01' ,request_id: 23},
         {id: 14, shift_id: 38, start: '14:00', date: '2018-04-02' ,request_id: 0},
         {id: 15, shift_id: 42, start: '18:00', date: '2018-04-03' ,request_id: 27},
-        {id: 16, shift_id: 43, start: '10:00', date: '2018-04-04' ,request_id: 0},
-        {id: 17, shift_id: 46, start: '10:00', date: '2018-04-05' ,request_id: 0}
+        {id: 16, shift_id: 43, start: '10:00', date: '2018-04-04' ,request_id: 0}
       ]);
     })
     .then(() => {
       return knex.raw(
-        `SELECT setval('requests_id_seq', (SELECT MAX(id) FROM requests));`
+        `SELECT setval('user_shifts_id_seq', (SELECT MAX(id) FROM user_shifts));`
       )
     })
 };

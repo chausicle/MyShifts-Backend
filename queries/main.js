@@ -30,10 +30,18 @@ const getOneShift = (id) => {
     .where('id', id)
 }
 
-const takeShift = (shift_id) => {
-  return knex
-    .insert({ shift_id })
-    .into('user_shifts')
+const takeShift = (shift_id, start, date, request_id) => {
+
+  console.log(shift_id, start, date, request_id)
+  return knex('user_shifts')
+    .insert({ shift_id, start, date, request_id })
+    .returning('*')
+}
+
+const releaseShift = (shift_id, request_id) => {
+  return knex('user_shifts')
+    .where('shift_id', shift_id)
+    .update({ request_id })
     .returning('*')
 }
 
@@ -55,9 +63,9 @@ const deleteRequest = (id) => {
 
 const deleteUserShift = (id) => {
   return knex('user_shifts')
-    .delete()
+    .where('shift_id', id)
+    .del()
     .returning('*')
-    .where({ id })
 }
 
 module.exports = {
@@ -65,6 +73,7 @@ module.exports = {
   getUserShifts,
   getOneShift,
   takeShift,
+  releaseShift,
   createRequest,
   deleteRequest,
   deleteUserShift
