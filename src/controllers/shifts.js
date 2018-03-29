@@ -40,7 +40,8 @@ const getById = (req, res, next) => {
 }
 
 const takeShift = (req, res, next) => {
-  const data = model.takeShift(req)
+  console.log('body in takeShift ctrl', req.body)
+  const data = model.takeShift(req.body)
 
   if (data.errors) {
     return next({
@@ -54,7 +55,18 @@ const takeShift = (req, res, next) => {
   })
 }
 
+const releaseShift = (req, res, next) => {
+  console.log('req res in releaseShifty in ctrl', req.params, req.body)
+  const data = model.releaseShift(req.params, req.body)
+  
+  data.then(result => {
+    res.status(200).json({ result })
+  })
+  
+}
+
 const createRequest =  (req, res, next) => {
+  console.log('req body in ctrl', req.body)
   const data = model.createRequest(req.body)
   if (data.errors) {
     return next({ status: 400, message: `Could not create new request`, errors: data.errors })
@@ -100,6 +112,7 @@ module.exports = {
   getUserShifts,
   getOneShift,
   takeShift,
+  releaseShift,
   createRequest,
   deleteRequest,
   deleteUserShift

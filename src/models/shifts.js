@@ -1,6 +1,7 @@
 const shifts = require('../../queries/main')
 
 const getRequests = () => {
+  console.log('WHYYYYYYYY')
   const requests = shifts.getRequests()
   return requests
     .then(result => {
@@ -25,11 +26,13 @@ const getOneShift = (id) => {
     })
 }
 
-const takeShift = (req) => {
-  let result
+const takeShift = (body) => {
+  // let result
   let errors = []
-  const shift_id = req.params.id
-  const employee_id = req.body.employeeId
+  const shift_id = body.shift_id
+  const start = body.start
+  const date = body.date
+  const request_id = body.request_id
 
   if (isNaN(Number(shift_id))) {
     errors.push(`Invalid id: ${shift_id}`)
@@ -39,7 +42,7 @@ const takeShift = (req) => {
       errors
     }
   } else {
-    const addedShift = shifts.takeShift(shift_id)
+    const addedShift = shifts.takeShift(shift_id, start, date, request_id)
     return addedShift
       .then(res => {
         return res[0]
@@ -48,11 +51,21 @@ const takeShift = (req) => {
 }
 
 const releaseShift = (params, body) => {
+
+  console.log('params body in releaseShift model', params, body)
   const shift_id = params.id
   const request_id = body.request_id
+  const shiftReleased = shifts.releaseShift(shift_id, request_id)
+
+  return shiftReleased
+    .then(result => {
+      return result[0]
+    })
 }
 
 const createRequest = (body) => {
+
+  console.log('body in createRequest model', body)
   const errors = []
 
   const employeeId = body.employee_id
@@ -104,6 +117,7 @@ module.exports = {
   getUserShifts,
   getOneShift,
   takeShift,
+  releaseShift,
   createRequest,
   deleteRequest,
   deleteUserShift
