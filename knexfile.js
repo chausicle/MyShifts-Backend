@@ -7,6 +7,6 @@ module.exports = {
   },
   test: {
     client: 'pg',
-    connection: `${process.env.DATABASE_URL}/${process.env.DATABASE_NAME}`
+    connection: `postgres://localhost/myShifts_test`
   }
 }

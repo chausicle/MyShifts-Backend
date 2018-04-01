@@ -1,7 +1,7 @@
 const shifts = require('../../queries/main')
 
 const getRequests = () => {
-  console.log('WHYYYYYYYY')
+  // console.log('WHYYYYYYYY')
   const requests = shifts.getRequests()
   return requests
     .then(result => {
@@ -21,7 +21,7 @@ const getOneShift = (id) => {
   const oneShift = shifts.getOneShift(id)
   return oneShift
     .then(result => {
-      console.log('result in model', result[0])
+      // console.log('result in model', result[0])
       return result[0]
     })
 }
@@ -52,7 +52,7 @@ const takeShift = (body) => {
 
 const releaseShift = (params, body) => {
 
-  console.log('params body in releaseShift model', params, body)
+  // console.log('params body in releaseShift model', params, body)
   const shift_id = params.id
   const request_id = body.request_id
   const shiftReleased = shifts.releaseShift(shift_id, request_id)
@@ -60,12 +60,13 @@ const releaseShift = (params, body) => {
   return shiftReleased
     .then(result => {
       return result[0]
+
     })
 }
 
 const createRequest = (body) => {
 
-  console.log('body in createRequest model', body)
+  // console.log('body in createRequest model', body)
   const errors = []
 
   const employeeId = body.employee_id
