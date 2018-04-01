@@ -1,3 +1,5 @@
+if (process.env.NODE_ENV !== 'test') require('dotenv').load()
+
 module.exports = {
   development: {
     client: 'pg',
@@ -5,6 +7,6 @@ module.exports = {
   },
   test: {
     client: 'pg',
-    connection: 'postgres://localhost/myShifts_test'
+    connection: `${process.env.DATABASE_URL}/${process.env.DATABASE_NAME}`
   }
 }
