@@ -13,7 +13,7 @@ chai.use(chaiHttp)
 
 chai.use(chaiAsPromised)
 
-describe('API Routes', () => {
+describe('API Routes - BETTY', () => {
 
   before(function () {
     const tmpConnection = require('knex')({ client: 'pg', connection: process.env.DATABASE_URL })
@@ -44,7 +44,7 @@ describe('API Routes', () => {
     })
   })
 
-  describe('Relesase shift', () => {
+  describe('Release shift', () => {
     it('update request_id of one user\'s shift given the shift_id', done => {
       const shiftId = 1
       const request_id = 31
