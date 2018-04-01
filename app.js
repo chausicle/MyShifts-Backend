@@ -11,7 +11,9 @@ app.disable('x-powered-by')
 if (process.env.NODE_ENV !== 'test') app.use(morgan('dev'))
 
 const shiftsPath = require('./src/routes/shifts')
+const signupPath = require('./src/routes/signup')
 app.use('/shifts', shiftsPath)
+app.use('/signup', signupPath)
 
 app.use((err, req, res, next) => {
   const status = err.status || 500
