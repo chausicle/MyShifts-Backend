@@ -60,6 +60,7 @@ const releaseShift = (req, res, next) => {
   const data = model.releaseShift(req.params, req.body)
   
   data.then(result => {
+    console.log('result in release shift in ctrl', result)
     res.status(200).json({ result })
   })
   
@@ -90,6 +91,7 @@ const deleteRequest = (req, res) => {
       if(result === 0) {
          res.status(404).json({error: {message: 'Could not delete request', errors: 'Request id not found'}})
       } else {
+        console.log('result in deleteRequest in ctrl', typeof result)
       res.status(204).json({ result })
       }
     })
