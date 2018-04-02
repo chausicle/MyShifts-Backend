@@ -89,11 +89,21 @@ const createAcct = (first_name, last_name, email, password) => {
 }
 
 const hash = (password, saltRounds) => {
-  
+
   const salt = bcrypt.genSaltSync(saltRounds);
   const hash = bcrypt.hashSync(`${password}`, salt);
 
   return `${hash}`
+}
+
+const checkLogin = (email, password) => {
+  return knex('employees')
+  .select('password')
+  .where('email')
+  .then (storedPass => {
+    if (!storedPass) return false;
+    return bcrypt.compareSync(password, storedPass.password)
+  })
 }
 
 module.exports = {
@@ -105,5 +115,6 @@ module.exports = {
   createRequest,
   deleteRequest,
   deleteUserShift,
-  createAcct
+  createAcct,
+  checkLogin
 }
