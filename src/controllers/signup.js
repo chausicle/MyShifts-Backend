@@ -10,8 +10,6 @@ console.log('ddddddata', data)
       console.log('result in login ctrl', result)
       res.status(201).send( result )
     })
-  
-
 }
 
 module.exports = { createAcct }

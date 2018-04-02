@@ -12,7 +12,7 @@ const createAcct = (body) => {
   console.log('last name', last_name)
   console.log('email', email)
   console.log('password', password)
-  
+
   const signupRes = login.createAcct(first_name, last_name, email, password)
 
   return signupRes
