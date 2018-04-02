@@ -1,4 +1,5 @@
 const knex = require('./db')
+const bcrypt = require('bcryptjs');
 
 const getRequests = () => {
   // get requests with nested employees
@@ -32,7 +33,7 @@ const getOneShift = (id) => {
 
 const takeShift = (shift_id, start, date, request_id) => {
 
-  console.log(shift_id, start, date, request_id)
+  // console.log(shift_id, start, date, request_id)
   return knex('user_shifts')
     .insert({ shift_id, start, date, request_id })
     .returning('*')
@@ -64,8 +65,35 @@ const deleteRequest = (id) => {
 const deleteUserShift = (id) => {
   return knex('user_shifts')
     .where('shift_id', id)
-    .del()
     .returning('*')
+    .del()
+
+}
+
+const createAcct = (first_name, last_name, email, password) => {
+  return knex('employees')
+    .where('email', email)
+    .first()
+    .then(found => {
+      if(found) {
+        return ' already present'
+      } else {
+        const hashedPassword = hash(password, 10)
+
+        return knex('employees')
+          .insert({first_name, last_name, email, password: hashedPassword })
+          .into('employees')
+          .returning('*')
+      }
+    })
+}
+
+const hash = (password, saltRounds) => {
+  
+  const salt = bcrypt.genSaltSync(saltRounds);
+  const hash = bcrypt.hashSync(`${password}`, salt);
+
+  return `${hash}`
 }
 
 module.exports = {
@@ -76,5 +104,6 @@ module.exports = {
   releaseShift,
   createRequest,
   deleteRequest,
-  deleteUserShift
+  deleteUserShift,
+  createAcct
 }

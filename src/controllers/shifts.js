@@ -18,12 +18,12 @@ const getUserShifts = (req, res, next) => {
 }
 
 const getOneShift = (req, res, next) => {
-  console.log('------', req.params);
+  // console.log('------', req.params);
 
   const data = model.getOneShift(req.params.id)
   data
     .then(result => {
-      console.log('result in controller', result)
+      // console.log('result in controller', result)
       res.status(200).json({ result })
     }
   )
@@ -40,7 +40,7 @@ const getById = (req, res, next) => {
 }
 
 const takeShift = (req, res, next) => {
-  console.log('body in takeShift ctrl', req.body)
+  // console.log('body in takeShift ctrl', req.body)
   const data = model.takeShift(req.body)
 
   if (data.errors) {
@@ -56,17 +56,18 @@ const takeShift = (req, res, next) => {
 }
 
 const releaseShift = (req, res, next) => {
-  console.log('req res in releaseShifty in ctrl', req.params, req.body)
+  // console.log('req res in releaseShifty in ctrl', req.params, req.body)
   const data = model.releaseShift(req.params, req.body)
-  
+
   data.then(result => {
+    // console.log('result in release shift in ctrl', result)
     res.status(200).json({ result })
   })
-  
+
 }
 
 const createRequest =  (req, res, next) => {
-  console.log('req body in ctrl', req.body)
+  // console.log('req body in ctrl', req.body)
   const data = model.createRequest(req.body)
   if (data.errors) {
     return next({ status: 400, message: `Could not create new request`, errors: data.errors })
@@ -90,6 +91,7 @@ const deleteRequest = (req, res) => {
       if(result === 0) {
          res.status(404).json({error: {message: 'Could not delete request', errors: 'Request id not found'}})
       } else {
+        // console.log('result in deleteRequest in ctrl', typeof result)
       res.status(204).json({ result })
       }
     })
@@ -99,10 +101,10 @@ const deleteUserShift = (req, res, next) => {
   const id = Number(req.params.id)
   const data = model.deleteUserShift(id)
     data.then(result => {
-      if (result.length === 0) {
+      if (result === 0) {
         res.status(404).json( {error: `ID ${id} not found`})
       } else {
-        res.status(200).json( { message: `Sucessfully deleted user_shifts ${id}`})
+        res.status(204).json({ result })
     }
     })
 }
