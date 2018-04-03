@@ -9,6 +9,33 @@ const getRequests = () => {
   })
 }
 
+const getEmployeeShifts = (params) => {
+  const employee_id = params.id
+  const employeeShifts = shifts.getEmployeeShifts(employee_id)
+
+   employeeShifts
+    .then(allShiftIds => {
+      console.log('allShifts', allShiftIds)
+      return allShiftIds.map(shift => {
+        console.log('sssssss', shift.shift_id)
+        return shifts.getOneShift(shift.shift_id)
+          .then(result => {
+            // const shifts = []
+           
+
+            //console.log('shifts in getEmployeeShifts model', shifts)
+            console.log('result in getEmployeeShifts in model', result)
+            return result
+          })
+      })
+    })
+}
+
+const getEmployeeShiftIds = (params) => {
+
+
+}
+
 const getUserShifts = () => {
   const userShifts = shifts.getUserShifts()
   return userShifts
@@ -115,6 +142,7 @@ const deleteUserShift = id => {
 
 module.exports = {
   getRequests,
+  getEmployeeShifts,
   getUserShifts,
   getOneShift,
   takeShift,
