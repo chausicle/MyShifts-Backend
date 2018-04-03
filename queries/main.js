@@ -95,11 +95,25 @@ const createAcct = (first_name, last_name, email, password) => {
 }
 
 const hash = (password, saltRounds) => {
-  
+
   const salt = bcrypt.genSaltSync(saltRounds);
   const hash = bcrypt.hashSync(`${password}`, salt);
 
   return `${hash}`
+}
+
+const checkLogin = (email, password) => {
+  return knex('employees')
+  .select('password', 'id')
+  .where({ email })
+  .then (result => {
+    if (bcrypt.compareSync(password, result[0].password) === true) {
+      console.log(result[0].id, "this is the knex employee id");
+      return result[0].id
+    } else {
+      return false
+    }
+  })
 }
 
 module.exports = {
@@ -112,5 +126,6 @@ module.exports = {
   createRequest,
   deleteRequest,
   deleteUserShift,
-  createAcct
+  createAcct,
+  checkLogin
 }

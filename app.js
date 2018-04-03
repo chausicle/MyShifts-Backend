@@ -12,7 +12,8 @@ if (process.env.NODE_ENV !== 'test') app.use(morgan('dev'))
 
 const shiftsPath = require('./src/routes/shifts')
 const signupPath = require('./src/routes/signup')
-const signupPath = require('./src/routes/login')
+const loginPath = require('./src/routes/login')
+
 app.use('/shifts', shiftsPath)
 app.use('/signup', signupPath)
 app.use('/login', loginPath)
