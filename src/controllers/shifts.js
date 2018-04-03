@@ -9,6 +9,18 @@ const getRequests = (req, res, next) => {
   })
 }
 
+const getEmployeeShifts = (verifyJWT, getShifts)
+
+
+const getShifts = (req, res) => {
+  console.log('req.paramssssss', req.params)
+  const data = model.getEmployeeShifts(req.params)
+  data
+    .then(result => {
+      console.log('result in getEmployessShifts ctrl', result)
+    })
+}
+
 const getUserShifts = (req, res, next) => {
   const data = model.getUserShifts()
   data
@@ -67,7 +79,7 @@ const releaseShift = (req, res, next) => {
 }
 
 const createRequest =  (req, res, next) => {
-  // console.log('req body in ctrl', req.body)
+ 
   const data = model.createRequest(req.body)
   if (data.errors) {
     return next({ status: 400, message: `Could not create new request`, errors: data.errors })
@@ -111,6 +123,7 @@ const deleteUserShift = (req, res, next) => {
 
 module.exports = {
   getRequests,
+  getEmployeeShifts,
   getUserShifts,
   getOneShift,
   takeShift,
