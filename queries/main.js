@@ -98,11 +98,15 @@ const hash = (password, saltRounds) => {
 
 const checkLogin = (email, password) => {
   return knex('employees')
-  .select('password')
-  .where('email')
-  .then (storedPass => {
-    if (!storedPass) return false;
-    return bcrypt.compareSync(password, storedPass.password)
+  .select('password', 'id')
+  .where({ email })
+  .then (result => {
+    if (bcrypt.compareSync(password, result[0].password) === true) {
+      console.log(result[0].id, "this is the knex employee id");
+      return result[0].id
+    } else {
+      return false
+    }
   })
 }
 
