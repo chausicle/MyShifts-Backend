@@ -97,13 +97,20 @@ const hash = (password, saltRounds) => {
 }
 
 const checkLogin = (email, password) => {
+  console.log(email);
+  console.log(password);
   return knex('employees')
-  .select('password')
-  .where('email')
-  .then (storedPass => {
-    if (!storedPass) return false;
-    return bcrypt.compareSync(password, storedPass.password)
-  })
+    .select('password')
+    .where({ email })
+    .first()
+    .then (storedPass => {
+      console.log(storedPass.password);
+      if (!storedPass.password) return false;
+      return bcrypt.compareSync(password, storedPass.password)
+    })
+    .catch(error => {
+      return false;
+    })
 }
 
 module.exports = {
