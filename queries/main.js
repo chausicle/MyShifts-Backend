@@ -100,17 +100,16 @@ const checkLogin = (email, password) => {
   console.log(email);
   console.log(password);
   return knex('employees')
-    .select('password')
-    .where({ email })
-    .first()
-    .then (storedPass => {
-      console.log(storedPass.password);
-      if (!storedPass.password) return false;
-      return bcrypt.compareSync(password, storedPass.password)
-    })
-    .catch(error => {
-      return false;
-    })
+  .select('password', 'id')
+  .where({ email })
+  .then (result => {
+    if (bcrypt.compareSync(password, result[0].password) === true) {
+      console.log(result[0].id, "this is the knex employee id");
+      return result[0].id
+    } else {
+      return false
+    }
+  })
 }
 
 module.exports = {
