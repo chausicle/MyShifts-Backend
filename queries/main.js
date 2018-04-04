@@ -110,7 +110,10 @@ const checkLogin = (email, password) => {
   .select('password', 'id')
   .where({ email })
   .then (result => {
-    if (bcrypt.compareSync(password, result[0].password) === true) {
+    console.log(result);
+    if (result.length === 0) {
+      return false
+    } else if (bcrypt.compareSync(password, result[0].password) === true) {
       console.log(result[0].id, "this is the knex employee id");
       return result[0].id
     } else {
