@@ -1,11 +1,12 @@
 const model = require('../models/shifts')
 
 const getEmployeeShifts = (req, res) => {
-  console.log('req.paramssssss', req.headers)
+  // console.log(employeeId, "<<<<<<<<<<<<<< id in ctrl");
+  // console.log('req.paramssssss', req.headers)
   const data = model.getEmployeeShifts(req.headers)
   data
     .then(result => {
-      console.log('result in getEmployessShifts ctrl', result)
+      // console.log('result in getEmployessShifts ctrl', result)
       res.status(200).json( result )
     })
 }
