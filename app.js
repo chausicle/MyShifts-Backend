@@ -11,10 +11,12 @@ app.disable('x-powered-by')
 if (process.env.NODE_ENV !== 'test') app.use(morgan('dev'))
 
 const shiftsPath = require('./src/routes/shifts')
+const requestsPath = require('./src/routes/requests')
 const signupPath = require('./src/routes/signup')
 const loginPath = require('./src/routes/login')
 
 app.use('/shifts', shiftsPath)
+app.use('/requests', requestsPath)
 app.use('/signup', signupPath)
 app.use('/login', loginPath)
 
