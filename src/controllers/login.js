@@ -11,7 +11,9 @@ const checkLogin = (req, res) => {
       if (result.error) {
         res.sendStatus(403)
       } else {
-        res.set('Auth', `Bearer: ${result}`).send('password correct, JWT set in Auth header')
+        res.set({'Access-Control-Expose-Headers': 'Authorization',
+                'Authorization': `${result}`})
+        .send('passwords match, token in Authorization header')
     }
   })
 }
