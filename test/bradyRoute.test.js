@@ -8,6 +8,7 @@ const server = require('../app')
 const chaiAsPromised = require('chai-as-promised')
 const knex = require('../queries/db')
 const config = require('../knexfile').test
+const bcrypt = require('bcryptjs')
 
 chai.use(chaiHttp)
 
@@ -108,6 +109,7 @@ describe('API Routes - BRADY', () => {
     });
     });
 
+//written by jon g88
   describe('POST to signup', () => {
     it('should add new user on signup', done => {
       chai.request(server)
@@ -123,6 +125,14 @@ describe('API Routes - BRADY', () => {
         res.should.be.json;
         res.body.should.be.a('object')
         res.body.should.have.property('first_name')
+        res.body.first_name.should.equal('Justin')
+        res.body.should.have.property('last_name')
+        res.body.last_name.should.equal('Baize')
+        res.body.should.have.property('email')
+        res.body.email.should.equal('justin.baize@galvanize.com')
+        res.body.should.have.property('password')
+        let verifyPass = bcrypt.compareSync('martial arts', res.body.password)
+        verifyPass.should.equal(true)
         done()
       })
     })
