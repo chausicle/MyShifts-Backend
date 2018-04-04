@@ -18,8 +18,14 @@ const getEmployeeShifts = (headers) => {
 
    return employeeShifts
     .then(allShifts => {
-      // console.log('allllllshifts', allShifts)
+console.log('allshifts in getEmployeeShifts in model', allShifts)
+      allShifts.forEach(shift => {
+          shift.employee_id = employee_id
+      })
+
+      console.log('allShifts in ghetEmployeeShifts in shifts model', allShifts)
       return allShifts
+     
     })
 }
 
@@ -65,15 +71,17 @@ const takeShift = (body) => {
   }
 }
 
-const releaseShift = (params, body) => {
+const updateEmployeesShifts = (body) => {
 
-  // console.log('params body in releaseShift model', params, body)
-  const shift_id = params.id
-  const request_id = body.request_id
-  const shiftReleased = shifts.releaseShift(shift_id, request_id)
+  console.log('body in updateEmployeesShifts model', body)
+  const shift_id = body.shift_id
+  const employee_id = body.employee_id
+  const userId = body.userId
+  const updatedShift = shifts.updateEmployeesShifts(shift_id, employee_id, userId)
 
-  return shiftReleased
+  return updatedShift
     .then(result => {
+      console.log('result in updateEmployeesShifts in model', result)
       return result[0]
 
     })
@@ -100,6 +108,6 @@ module.exports = {
   getUserShifts,
   getOneShift,
   takeShift,
-  releaseShift,
+  updateEmployeesShifts,
   deleteUserShift
 }

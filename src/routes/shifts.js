@@ -15,12 +15,11 @@ const verifyToken = (req, res, next) => {
   next()
 }
 
-router.get('/', verifyToken, ctrl.getEmployeeShifts)
+router.get('/', ctrl.getEmployeeShifts)
 router.get('/user-shifts', ctrl.getUserShifts)
 router.get('/:id', ctrl.getOneShift)
 router.post('/user-shifts', ctrl.takeShift)
-router.patch('/user-shifts/:id', ctrl.releaseShift)
-
+router.patch('/', ctrl.updateEmployeesShifts)
 router.delete('/user-shifts/:id', ctrl.deleteUserShift)
 
 
