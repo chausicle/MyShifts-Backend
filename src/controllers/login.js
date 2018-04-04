@@ -6,13 +6,15 @@ const checkLogin = (req, res) => {
   console.log(email, password, "contrller");
   const data = model.checkLogin(email, password)
   data
-  .then(result => {
-    console.log(result, 'data in controller login');
-    res.set('Auth', `Bearer: ${result}`).send('password correct, JWT set in Auth header')
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(403).send( err )
+    .then(result => {
+      console.log(result, 'result in controller login');
+      if (result.error) {
+        res.sendStatus(403)
+      } else {
+        res.set({'Access-Control-Expose-Headers': 'Authorization',
+                'Authorization': `${result}`})
+        .send('passwords match, token in Authorization header')
+    }
   })
 }
 
