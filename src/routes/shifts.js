@@ -1,7 +1,19 @@
 const express = require('express')
 const router = express.Router()
 const ctrl = require('../controllers/shifts')
+const jwt = require('jsonwebtoken')
 
+const verifyToken = (req, res, next) => {
+  const secret = 'meow'
+  const token = req.headers.authorization
+  const verified = jwt.verify(token, secret, (err, result) => {
+    // console.log(err,'||', result);
+    if (err !== null) {
+      return next({ err: {status: 403, message: 'jwt did not verify'} })
+    }
+  })
+  next()
+}
 
 router.get('/', ctrl.getEmployeeShifts)
 router.get('/user-shifts', ctrl.getUserShifts)
@@ -11,10 +23,7 @@ router.patch('/', ctrl.updateEmployeesShifts)
 router.delete('/user-shifts/:id', ctrl.deleteUserShift)
 
 
-const verifyToken = (req, res, next) => {
-  const secret = 'meow'
 
-}
 
 
 module.exports = router

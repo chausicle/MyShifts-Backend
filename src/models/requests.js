@@ -1,7 +1,7 @@
 const shifts = require('../../queries/main')
 
 const getRequests = () => {
-  console.log('WHYYYYYYYY')
+  // console.log('WHYYYYYYYY')
   const requests = shifts.getRequests()
   return requests
     .then(result => {
