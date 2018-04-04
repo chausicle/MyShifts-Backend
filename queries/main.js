@@ -20,6 +20,15 @@ const getRequests = () => {
     })
 }
 
+const getEmployeeShifts = (employee_id) => {
+    return knex('shifts')
+      .select('date', 'start')
+      .join('employees_shifts', 'shift_id', '=', 'shifts.id')
+      .where('employee_id', employee_id )
+      
+      
+}
+
 const getUserShifts = () => {
   return knex('user_shifts')
     .select('')
@@ -115,6 +124,7 @@ const checkLogin = (email, password) => {
 
 module.exports = {
   getRequests,
+  getEmployeeShifts,
   getUserShifts,
   getOneShift,
   takeShift,
