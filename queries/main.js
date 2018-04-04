@@ -22,11 +22,10 @@ const getRequests = () => {
 
 const getEmployeeShifts = (employee_id) => {
     return knex('shifts')
-      .select('date', 'start')
+      .select('shifts.id AS shift_id', 'shifts.date', 'shifts.start', 'employees.first_name')
       .join('employees_shifts', 'shift_id', '=', 'shifts.id')
-      .where('employee_id', employee_id )
-
-
+      .join('employees', "employees.id", "=", employee_id)
+      .where('employees_shifts.employee_id', employee_id )
 }
 
 const getUserShifts = () => {
@@ -48,10 +47,11 @@ const takeShift = (shift_id, start, date, request_id) => {
     .returning('*')
 }
 
-const releaseShift = (shift_id, request_id) => {
-  return knex('user_shifts')
+const updateEmployeesShifts = (shift_id, employee_id, userId) => {
+  return knex('employees_shifts')
     .where('shift_id', shift_id)
-    .update({ request_id })
+    .andWhere('employee_id', employee_id)
+    .update({ employee_id: userId })
     .returning('*')
 }
 
@@ -130,7 +130,7 @@ module.exports = {
   getUserShifts,
   getOneShift,
   takeShift,
-  releaseShift,
+  updateEmployeesShifts,
   createRequest,
   deleteRequest,
   deleteUserShift,
