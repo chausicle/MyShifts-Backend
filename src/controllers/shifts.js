@@ -56,12 +56,12 @@ const takeShift = (req, res, next) => {
   })
 }
 
-const releaseShift = (req, res, next) => {
+const updateEmployeesShifts = (req, res, next) => {
   // console.log('req res in releaseShifty in ctrl', req.params, req.body)
-  const data = model.releaseShift(req.params, req.body)
+  const data = model.updateEmployeesShifts(req.body)
 
   data.then(result => {
-    // console.log('result in release shift in ctrl', result)
+     console.log('result in updateEmployeesShifts in ctrl', result)
     res.status(200).json({ result })
   })
 
@@ -86,6 +86,6 @@ module.exports = {
   getUserShifts,
   getOneShift,
   takeShift,
-  releaseShift,
+  updateEmployeesShifts,
   deleteUserShift
 }
