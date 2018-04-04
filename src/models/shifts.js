@@ -4,12 +4,12 @@ const jwt = require('jsonwebtoken');
 
 
 const getEmployeeShifts = (headers) => {
-console.log('heeeeeaders', headers)
+// console.log('heeeeeaders', headers)
   const token = headers.authorization
-  console.log('ttttttttoken', token)
+  // console.log('ttttttttoken', token)
   const decoded = jwt.decode(token);
 
-  console.log('dddddcoded', decoded)
+  // console.log('dddddcoded', decoded)
   //console.log('paaaaaayload', decoded.payload)
 
   const employee_id = decoded.sub.id
@@ -18,7 +18,7 @@ console.log('heeeeeaders', headers)
 
    return employeeShifts
     .then(allShifts => {
-      console.log('allllllshifts', allShifts)
+      // console.log('allllllshifts', allShifts)
       return allShifts
     })
 }
