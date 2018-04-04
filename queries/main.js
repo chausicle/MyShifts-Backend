@@ -106,6 +106,8 @@ const hash = (password, saltRounds) => {
 }
 
 const checkLogin = (email, password) => {
+  console.log(email);
+  console.log(password);
   return knex('employees')
   .select('password', 'id')
   .where({ email })
