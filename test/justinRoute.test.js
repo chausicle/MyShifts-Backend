@@ -9,7 +9,7 @@ const chai = require("chai");
 chai.use(chaiHttp);
 chai.use(require("chai-as-promised"));
 
-describe("API Routes", () => {
+describe("API Routes - JUSTIN", () => {
   before(() => {
     const tmpConnection = require("knex")({ client: "pg", connection: process.env.DATABASE_URL });
 
@@ -23,7 +23,7 @@ describe("API Routes", () => {
   });
 
   describe("GET /shifts/user-shifts", () => {
-    it ("Should return a response body", (done) => {
+    it ("Should get all user shifts", (done) => {
       chai.request(server)
         .get("/shifts/user-shifts")
         .end((err, res) => {
@@ -31,67 +31,15 @@ describe("API Routes", () => {
           res.should.be.json;
           res.body.should.be.a("object");
           res.body.result.should.be.a("array");
+          res.body.result[0].should.have.property("id");
+          res.body.result[0].should.have.property("shift_id");
+          res.body.result[0].should.have.property("start");
+          res.body.result[0].should.have.property("date");
+          res.body.result[0].should.have.property("request_id");
+          res.body.result[0].should.have.property("created_at");
+          res.body.result[0].should.have.property("updated_at");
           done();
         });
-
-      describe("#Result response body should have the following properties:", () => {
-        it ("Should have property id", (done) => {
-          chai.request(server)
-            .get("/shifts/user-shifts")
-            .end((err, res) => {
-              res.body.result[0].should.have.property("id");
-              done();
-            });
-        });
-        it ("Should have property shift_id", (done) => {
-          chai.request(server)
-            .get("/shifts/user-shifts")
-            .end((err, res) => {
-              res.body.result[0].should.have.property("shift_id");
-              done();
-            });
-        });
-        it ("Should have property start", (done) => {
-          chai.request(server)
-            .get("/shifts/user-shifts")
-            .end((err, res) => {
-              res.body.result[0].should.have.property("start");
-              done();
-            });
-        });
-        it ("Should have property date", (done) => {
-          chai.request(server)
-            .get("/shifts/user-shifts")
-            .end((err, res) => {
-              res.body.result[0].should.have.property("date");
-              done();
-            });
-        });
-        it ("Should have property request_id", (done) => {
-          chai.request(server)
-            .get("/shifts/user-shifts")
-            .end((err, res) => {
-              res.body.result[0].should.have.property("request_id");
-              done();
-            });
-        });
-        it ("Should have property created_at", (done) => {
-          chai.request(server)
-            .get("/shifts/user-shifts")
-            .end((err, res) => {
-              res.body.result[0].should.have.property("created_at");
-              done();
-            });
-        });
-        it ("Should have property updated_at", (done) => {
-          chai.request(server)
-            .get("/shifts/user-shifts")
-            .end((err, res) => {
-              res.body.result[0].should.have.property("updated_at");
-              done();
-            });
-        });
-      });
     });
   });
 });
