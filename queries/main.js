@@ -22,8 +22,11 @@ const getRequests = () => {
 
 const getEmployeeShifts = (employee_id) => {
     return knex('shifts')
-      .join('employees_shifts')
-      .where('employees_shifts.employee_id', employee_id )
+      .select('date', 'start')
+      .join('employees_shifts', 'shift_id', '=', 'shifts.id')
+      .where('employee_id', employee_id )
+      
+      
 }
 
 const getUserShifts = () => {
