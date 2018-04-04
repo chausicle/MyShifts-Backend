@@ -19,6 +19,8 @@ const checkLogin = (email, password) => {
         }
         const token = jwt.sign(jwtPayload, 'meow')
         console.log(token);
+        const decode = jwt.verify(token, 'meow')
+        console.log('decode', decode.sub.id);
         return token
       }
     })
