@@ -68,10 +68,28 @@ describe('API Routes - BETTY', () => {
     it('delete request from requests table given the request_id', done => {
       const request_id = 1
       chai.request(server)
-      .delete(`/shifts/requests/${request_id}`)
-      .end((err, res) => {
-        res.should.have.status(204);
-        done()
+        .delete(`/shifts/requests/${request_id}`)
+        .end((err, res) => {
+          res.should.have.status(204);
+          done()
+        })
+    })
+  })
+
+  describe("Get all user'\s shifts", () => {
+    it("get all user'\s shifts from the employees_shifts table", done => {
+      chai.request(server)
+        .get('/shifts')
+        .set('authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOnsiaWQiOjN9LCJsb2dnZWRJbiI6dHJ1ZSwiZXhwIjoxNTIyODAyNjI5LjczMSwiaWF0IjoxNTIyNzkyNjI5fQ.VgR7GFul-yglwHrRAyi1ME3M0BGU9jed1y-6m8eLmRg')
+        .end((err, res) => {
+          console.log('resssssss',res.body)
+          res.body.should.be.a('array')
+          res.body[0].should.have.property('date')
+          res.body[0].should.have.property('start')
+          res.body[0].should.have.property('first_name')
+          res.body[0].should.have.property('employee_id')
+          res.should.have.status(200);
+          done()
       })
     })
   })
