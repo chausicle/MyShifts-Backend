@@ -33,6 +33,19 @@ exports.seed = function(knex, Promise) {
         {id: 28, employee_id: 3, shift_id: 40, start: '10:00', date: '2018-04-03'},
         {id: 29, employee_id: 2, shift_id: 44, start: '14:00', date: '2018-04-04'},
         {id: 30, employee_id: 3, shift_id: 45, start: '18:00', date: '2018-04-04'},
+        {id: 31, employee_id: 1, shift_id: 46, start: '10:00', date: '2018-04-05'},
+        {id: 32, employee_id: 1, shift_id: 50, start: '14:00', date: '2018-04-06'},
+        {id: 33, employee_id: 1, shift_id: 54, start: '18:00', date: '2018-04-07'},
+        {id: 34, employee_id: 1, shift_id: 55, start: '10:00', date: '2018-04-08'},
+        {id: 35, employee_id: 3, shift_id: 59, start: '14:00', date: '2018-04-09'},
+        {id: 36, employee_id: 2, shift_id: 63, start: '18:00', date: '2018-04-10'},
+        {id: 37, employee_id: 1, shift_id: 64, start: '10:00', date: '2018-04-11'},
+        {id: 38, employee_id: 2, shift_id: 68, start: '14:00', date: '2018-04-12'},
+        {id: 39, employee_id: 3, shift_id: 72, start: '18:00', date: '2018-04-13'},
+        {id: 40, employee_id: 3, shift_id: 73, start: '10:00', date: '2018-04-14'},
+        {id: 41, employee_id: 3, shift_id: 77, start: '14:00', date: '2018-04-15'},
+        {id: 42, employee_id: 3, shift_id: 81, start: '18:00', date: '2018-04-16'},
+        {id: 43, employee_id: 2, shift_id: 82, start: '10:00', date: '2018-04-17'}
       ]);
     }).then(() => {
       return knex.raw(
