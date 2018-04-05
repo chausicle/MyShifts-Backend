@@ -7,7 +7,6 @@ const verifyToken = (req, res, next) => {
   const secret = 'meow'
   const token = req.headers.authorization
   const verified = jwt.verify(token, secret, (err, result) => {
-    // console.log(err,'||', result);
     if (err !== null) {
       return next({ err: {status: 403, message: 'jwt did not verify'} })
     }

@@ -41,4 +41,8 @@ const deleteRequest = (req, res) => {
     })
 }
 
-module.exports = { getRequests, createRequest, deleteRequest }
+module.exports = { 
+  getRequests, 
+  createRequest, 
+  deleteRequest 
+}
