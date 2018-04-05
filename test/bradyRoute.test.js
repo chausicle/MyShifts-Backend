@@ -8,6 +8,7 @@ const server = require('../app')
 const chaiAsPromised = require('chai-as-promised')
 const knex = require('../queries/db')
 const config = require('../knexfile').test
+const bcrypt = require('bcryptjs')
 
 chai.use(chaiHttp)
 
@@ -107,6 +108,35 @@ describe('API Routes - BRADY', () => {
       });
     });
     });
+
+//written by jon g88
+  describe('POST to signup', () => {
+    it('should add new user on signup', done => {
+      chai.request(server)
+      .post('/signup')
+      .send({
+        first_name: 'Justin',
+        last_name: 'Baize',
+        email: 'justin.baize@galvanize.com',
+        password: 'martial arts'
+      })
+      .end((err, res) => {
+        res.should.have.status(201);
+        res.should.be.json;
+        res.body.should.be.a('object')
+        res.body.should.have.property('first_name')
+        res.body.first_name.should.equal('Justin')
+        res.body.should.have.property('last_name')
+        res.body.last_name.should.equal('Baize')
+        res.body.should.have.property('email')
+        res.body.email.should.equal('justin.baize@galvanize.com')
+        res.body.should.have.property('password')
+        let verifyPass = bcrypt.compareSync('martial arts', res.body.password)
+        verifyPass.should.equal(true)
+        done()
+      })
+    })
+  })
 
   describe('DELETE one user shift by ID', () => {
     it('should delete one user shift matching shift_id 14', done => {
