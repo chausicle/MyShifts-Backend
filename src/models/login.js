@@ -1,15 +1,15 @@
-const db = require('../../queries/main')
+const login = require('../../queries/login')
 const jwt = require('jsonwebtoken')
 
 const checkLogin = (email, password) => {
-  const auth = db.checkLogin(email, password)
+  const auth = login.checkLogin(email, password)
   return auth
     .then(result => {
       if (result === false) {
-        // console.log(result, 'we got false in model');
+         console.log(result, 'we got false in model');
         return { error: 403, message: 'Username or pass did not match' }
       } else {
-        // console.log(result, 'we got id in model');
+         console.log(result, 'we got id in model');
         let jwtPayload = {
           sub: {
             id: result
@@ -18,9 +18,8 @@ const checkLogin = (email, password) => {
           exp: Date.now() / 1000 + 10000
         }
         const token = jwt.sign(jwtPayload, 'meow')
-        // console.log(token);
         const decode = jwt.verify(token, 'meow')
-        // console.log('decode', decode.sub.id);
+        
         return token
       }
     })
