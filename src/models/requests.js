@@ -2,6 +2,11 @@
 
 const requests = require('../../queries/requests')
 
+// using SendGrid's v3 Node.js Library
+// https://github.com/sendgrid/sendgrid-nodejs
+const sgMail = require('@sendgrid/mail');
+
+
 const getRequests = () => {
   console.log('fffffffff')
   const allRequests = requests.getRequests()
@@ -12,6 +17,17 @@ const getRequests = () => {
 }
 
 const createRequest = (body) => {
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+  const msg = {
+    to: 'chausicle@gmail.com',
+    from: 'team@myshifts.us',
+    subject: 'MyShifts: You have created a request',
+    text: 'and easy to do anywhere, even with Node.js',
+    html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+  };
+  sgMail.send(msg);
+  console.log('message sent');
+
   const errors = []
   const employeeId = body.employee_id
   const shiftId = body.shift_id
@@ -43,8 +59,8 @@ const deleteRequest = (id) => {
     })
 }
 
-module.exports = { 
-  getRequests, 
-  createRequest, 
-  deleteRequest 
+module.exports = {
+  getRequests,
+  createRequest,
+  deleteRequest
 }
