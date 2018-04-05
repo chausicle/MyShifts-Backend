@@ -65,7 +65,7 @@ exports.seed = function(knex, Promise) {
         {employee_id: 3, shift_id: 66},
         {employee_id: 1, shift_id: 67},
         {employee_id: 2, shift_id: 68},
-        {employee_id: 3, shift_id: 69}
+        {employee_id: 3, shift_id: 69},
         {employee_id: 1, shift_id: 70},
         {employee_id: 2, shift_id: 71},
         {employee_id: 3, shift_id: 72},
@@ -89,7 +89,7 @@ exports.seed = function(knex, Promise) {
         {employee_id: 3, shift_id: 90},
         {employee_id: 1, shift_id: 91},
         {employee_id: 2, shift_id: 92},
-        {employee_id: 3, shift_id: 93}
+        {employee_id: 3, shift_id: 93},
         {employee_id: 3, shift_id: 94},
         {employee_id: 1, shift_id: 95},
         {employee_id: 2, shift_id: 96},
@@ -98,7 +98,7 @@ exports.seed = function(knex, Promise) {
         {employee_id: 3, shift_id: 99},
         {employee_id: 1, shift_id: 100},
         {employee_id: 2, shift_id: 101},
-        {employee_id: 3, shift_id: 102}
+        {employee_id: 3, shift_id: 102},
         {employee_id: 1, shift_id: 103},
         {employee_id: 2, shift_id: 104},
         {employee_id: 3, shift_id: 105}
