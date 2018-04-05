@@ -1,4 +1,4 @@
-if (process.env.NODE_ENV !== 'test') require('dotenv').load()
+if (process.env.NODE_ENV === 'test') require('dotenv').load()
 
 module.exports = {
   development: {
