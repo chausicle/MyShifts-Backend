@@ -16,17 +16,62 @@ const getRequests = () => {
   })
 }
 
-const createRequest = (body) => {
+const processEmail = () => {
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+  console.log(process.env.SENDGRID_API_KEY);
+
+  const data = requests.getEmail(3)
+  .then(result => {
+   const email = result[0].email
+   sendEmail(email)
+ })
+}
+
+const sendEmail = (email) => {
+  console.log(email);
   const msg = {
-    to: 'chausicle@gmail.com',
+    to: `${email}`,
     from: 'team@myshifts.us',
     subject: 'MyShifts: You have created a request',
-    text: 'and easy to do anywhere, even with Node.js',
-    html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+    text: 'Notification: Your shift at 10:00 on 4/4/2018 has been released for the taking',
+    html: `<html>
+    <head>
+      <meta charset="utf-8">
+        <title>MyShifts Notification</title>
+        <style media="screen">
+          body {
+            background-color: #f9f9f9;
+            justify-content: center;
+            text-align: center;
+            font-size: 1.4em;
+            margin: 2em;
+          }
+
+          #container {
+            display: grid;
+            grid-template-rows: 100px 200px;
+          }
+
+          img {
+            height: 200px;
+            width: 200px;
+          }
+        </style>
+      </head>
+      <body>
+        <div id="container"><div><strong>Your shift at :time: on :date: has been :action:</strong></div>
+        <div><img src="https://i.imgur.com/XCyP6O1.png"></div></div>
+      </body>
+    </html>`,
   };
   sgMail.send(msg);
   console.log('message sent');
+}
+
+
+
+const createRequest = (body) => {
+
 
   const errors = []
   const employeeId = body.employee_id
@@ -41,6 +86,7 @@ const createRequest = (body) => {
     const newShift = requests.createRequest(employeeId, shiftId, start, date )
     return newShift
       .then(result => {
+        processEmail()
         return result[0]
     })
   }
