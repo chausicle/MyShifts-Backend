@@ -2,7 +2,7 @@ const shifts = require('../../queries/shifts')
 const requests = require('../../queries/requests')
 const jwt = require('jsonwebtoken');
 const sgMail = require('@sendgrid/mail');
-const emailHandler = require('./email')
+const emailHandler = require('../services/email')
 
 const getEmployeeShifts = (headers) => {
   const token = headers.authorization
@@ -29,7 +29,9 @@ const updateEmployeesShifts = (body) => {
   const updatedShift = shifts.updateEmployeesShifts(shift_id, employee_id, userId)
   return updatedShift
     .then(result => {
-      emailHandler.processShiftEmail(employee_id, shift_id, userId, start, date)
+      console.log(start, date, 'in updateEmployeesShifts');
+      emailHandler.processShiftEmailForUser(employee_id, shift_id, userId, start, date)
+      emailHandler.processShiftEmailForEmployee(employee_id, shift_id, userId, start, date)
       return result[0]
     })
 }
