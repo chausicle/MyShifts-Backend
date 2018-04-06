@@ -16,7 +16,7 @@ return knex('employees_shifts')
   .returning('*')
 }
 
-module.exports = { 
+module.exports = {
   getEmployeeShifts,
   updateEmployeesShifts,
 }
