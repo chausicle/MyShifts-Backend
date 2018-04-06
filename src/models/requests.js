@@ -17,10 +17,6 @@ const getRequests = () => {
   })
 }
 
-
-
-
-
 const createRequest = (body) => {
   const errors = []
   const employeeId = body.employee_id
