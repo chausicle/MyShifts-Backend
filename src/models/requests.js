@@ -5,7 +5,7 @@ const requests = require('../../queries/requests')
 // using SendGrid's v3 Node.js Library
 // https://github.com/sendgrid/sendgrid-nodejs
 const sgMail = require('@sendgrid/mail');
-const emailHandler = require('./email')
+const emailHandler = require('../services/email')
 
 
 const getRequests = () => {
