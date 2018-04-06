@@ -18,13 +18,12 @@ const getRequests = () => {
 
 const processEmail = () => {
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-  console.log(process.env.SENDGRID_API_KEY);
 
-  const data = requests.getEmail(3)
+  const data = requests.getEmail(1)
   .then(result => {
    const email = result[0].email
    sendEmail(email)
- })
+  })
 }
 
 const sendEmail = (email) => {
