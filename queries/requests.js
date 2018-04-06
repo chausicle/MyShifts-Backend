@@ -36,8 +36,15 @@ const deleteRequest = (id) => {
     .del()
 }
 
+const getEmail = (id) => {
+  return knex('employees')
+  .select('email')
+  .where({id})
+}
+
 module.exports = {
   getRequests,
   createRequest,
-  deleteRequest
+  deleteRequest,
+  getEmail
 }
