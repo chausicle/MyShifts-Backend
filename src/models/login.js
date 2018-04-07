@@ -17,9 +17,9 @@ const checkLogin = (email, password) => {
           loggedIn: true,
           exp: Date.now() / 1000 + 10000
         }
-        const token = jwt.sign(jwtPayload, 'meow')
-        const decode = jwt.verify(token, 'meow')
-        
+        const token = jwt.sign(jwtPayload, 'process.env.SECRET')
+        const decode = jwt.verify(token, 'process.env.SECRET')
+
         return token
       }
     })

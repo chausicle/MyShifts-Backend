@@ -4,7 +4,7 @@ const ctrl = require('../controllers/requests')
 const jwt = require('jsonwebtoken')
 
 const verifyToken = (req, res, next) => {
-  const secret = 'meow'
+  const secret = 'process.env.SECRET'
   const token = req.headers.authorization
   const verified = jwt.verify(token, secret, (err, result) => {
     if (err !== null) {

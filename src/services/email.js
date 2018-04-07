@@ -4,7 +4,6 @@ const requests = require('../../queries/requests')
 
 const processRequestEmail = (employeeId, start, date) => {
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-  console.log(process.env.SENDGRID_API_KEY);
 
   const data = requests.getEmail(employeeId)
   .then(result => {
@@ -83,7 +82,6 @@ const sendRequestEmail = (email, start, date) => {
 
 const processShiftEmailForUser = (employee_id, shift_id, userId, start, date) => {
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-  console.log(process.env.SENDGRID_API_KEY);
 
   const data = requests.getEmail(userId)
   .then(result => {
@@ -162,7 +160,6 @@ const sendShiftEmailForUser = (email, start, date) => {
 
 const processShiftEmailForEmployee = (employee_id, shift_id, userId, start, date) => {
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-  console.log(process.env.SENDGRID_API_KEY);
 
   const data = requests.getEmail(employee_id)
   .then(result => {
